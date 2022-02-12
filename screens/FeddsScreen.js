@@ -1,25 +1,20 @@
-import React, {useContext} from "react";
-import { StyleSheet, View, TextInput } from "react-native";
-import LogContext from "../context/LogContext";
+import React from "react";
+import { StyleSheet, View} from "react-native";
+import FloatingWriteButton from "../component/FloatingWriteButton";
 function FeedsScreen(){
-    const {text,setText} = useContext(LogContext)
+   
     return(
         <View style={styles.blocks}>
-            <TextInput 
-                value={text}
-                onChangeText={setText}
-                placeholder="텍스트를 입력하세요"
-                style={styles.input}/>
+            <FloatingWriteButton/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    blocks:{},
-    input:{
-        padding:16,
-        backgroundColor:'white'
-    }
+    blocks:{
+        flex:1
+    },
+    
 })
 
 export default FeedsScreen;
