@@ -1,19 +1,31 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React ,{useState}from "react";
 import {Pressable, StyleSheet, View } from "react-native";
-import { Icon } from "react-native-vector-icons/MaterialIcons";
+import WriteHeader from "../component/WriteHeader";
+import WriteEditer from "../component/WriteEditor";
+
 function WriteScreen(){
-    const navigation= useNavigation();
-    const goback = () =>{
-        navigation.pop();
-    }
+    const[title, setTitle] = useState('')
+    const [body,setBody] = useState('')
     return(
-        <View style={styles.block}/>
+        <View style={styles.block}>
+            <WriteHeader></WriteHeader>
+            <WriteEditer
+                title={title}
+                body={body}
+                onChangeBody={setBody}
+                onChangeTitle={setTitle}></WriteEditer>        
+        </View>
+
     )
 }
 
 const styles = StyleSheet.create({
-    block:{}
+    block:{
+        flex:1,
+        backgroundColor:'white'
+    },
+   
 })
 
 export default WriteScreen;
