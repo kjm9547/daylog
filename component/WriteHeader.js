@@ -3,7 +3,7 @@ import React from "react";
 import {StyleSheet,View} from 'react-native'
 import TransparentCircleButton from "./TransparentCircleButton";
 
-function WriteHeader({onSave}){
+function WriteHeader({onSave,onAskRemove,isEditing}){
     const navigation=useNavigation()
     const goback=() => navigation.pop()
     return(
@@ -16,11 +16,15 @@ function WriteHeader({onSave}){
             </View>
             
             <View style={styles.buttons}>
+                {isEditing &&(
                 <TransparentCircleButton
                 name="delete-forever"
                 color="#ef5350"
                 hasMarginRight
-                ></TransparentCircleButton>
+                onPress={onAskRemove}
+                >
+                </TransparentCircleButton>
+                )}
                 <TransparentCircleButton name="check" color="#009688"
                 onPress={onSave}/>
             </View>
